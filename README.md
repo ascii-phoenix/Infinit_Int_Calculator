@@ -21,4 +21,5 @@ Ich habe die Implementierung mit Console.WriteLine-Ausgaben getestet, um die Wer
 ##23.08.2024
 -[ ] Addition bugfixen
 -[ ] Addition mit minuszahlen
--[ ] Supbraktion
+-[ ] Supbraktion Hinzufüge
+-[ ] Supbraktion bugfixen
