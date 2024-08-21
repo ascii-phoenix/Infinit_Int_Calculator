@@ -20,6 +20,6 @@ Ich habe die Implementierung mit Console.WriteLine-Ausgaben getestet, um die Wer
 
 ##23.08.2024
 -[ ] Addition bugfixen
--[ ] Addition mit minuszahlen
--[ ] Supbraktion Hinzufüge
+-[ ] IComparable<ExdInt>, IEquatable<ExdInt> hinzufügen
+-[ ] Supbraktion mit postiven zahle wo a grösser ist als b zufüge
 -[ ] Supbraktion bugfixen
