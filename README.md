@@ -2,12 +2,13 @@
 ## Grob-Planung
 
 1. Intiger erweiterung Erstellen
-2. Addition erstellen
-3. Suptration erstellen
-4. Multiplikation Progrmieren
-5. Division Programieren
-6. sqrq adieren
-7. Wurtzel?
+2. Zwei zahlen vergleichen
+3. Addition erstellen
+4. Suptration erstellen
+5. Multiplikation Progrmieren
+6. Division Programieren
+7. sqrq adieren
+8. Wurtzel?
 
 ##16.08.2024
 Heute habe ich mit der Erweiterung für große Ganzzahlen (uExdInt) angefangen. Das Ziel ist es, mit sehr großen Zahlen zu arbeiten, die über die normalen Integer-Datentypen hinausgehen. Im Code habe ich eine Methode zur Addition solcher großen Zahlen implementiert.
