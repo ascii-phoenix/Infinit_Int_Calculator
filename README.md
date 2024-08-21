@@ -20,7 +20,7 @@ Ich stieß auf ein Problem beim Umgang mit dem Padding in der +-Operatorüberlad
 Ich habe die Implementierung mit Console.WriteLine-Ausgaben getestet, um die Werte der uIntWithPadding-Struktur zu überprüfen und den Fehler zu lokalisieren. Der nächste Schritt wird sein, die Berechnungen zu korrigieren und sicherzustellen, dass die Padding-Logik die korrekte Anzahl an Dezimalstellen darstellt.
 
 ##23.08.2024
--[ ] Addition bugfixen
--[ ] IComparable<ExdInt>, IEquatable<ExdInt> hinzufügen
--[ ] Supbraktion mit postiven zahle wo a grösser ist als b zufüge
--[ ] Supbraktion bugfixen
+- [ ] Addition bugfixen
+- [ ] IComparable<ExdInt>, IEquatable<ExdInt> hinzufügen
+- [ ] Supbraktion mit postiven zahle wo a grösser ist als b zufüge
+- [ ] Supbraktion bugfixen
