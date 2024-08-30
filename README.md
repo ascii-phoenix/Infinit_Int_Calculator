@@ -34,5 +34,12 @@ Allerdings sind bei der Subtraktion einige Fehler aufgetreten, die ich im nächs
 - [ ] Supbraktion bugfixen
 - [ ] Multiplikation
 - [ ] Multiplikation bugfixen
+
 Heute habe ich am PromilleRechner aus Modul 320 weitergearbeitet und wichtige Fortschritte erzielt. Zunächst habe ich mehrere Fehler behoben, die sich auf die Berechnung des Alkoholabbaus ausgewirkt haben. Ausserdem habe ich die Klasse "Sprüche" überarbeitet, um benutzerdefinierte Nachrichten je nach Promillewert auszugeben. Ein weiterer Schwerpunkt war die Verbesserung der Berechnung der Promillewerte, sodass nun genauere Ergebnisse erzielt werden können. Es gab einige Herausforderungen bei der Implementierung der Formeln. Link zum PromilleRechner-Repo --> https://github.com/ascii-phoenix/PromilleRechner
+
+06.09.2024
+- [ ] Addition bugfixen
+- [ ] Supbraktion bugfixen
+- [ ] Multiplikation
+- [ ] Multiplikation bugfixen
 
