@@ -38,8 +38,17 @@ Allerdings sind bei der Subtraktion einige Fehler aufgetreten, die ich im nächs
 Heute habe ich am PromilleRechner aus Modul 320 weitergearbeitet und wichtige Fortschritte erzielt. Zunächst habe ich mehrere Fehler behoben, die sich auf die Berechnung des Alkoholabbaus ausgewirkt haben. Ausserdem habe ich die Klasse "Sprüche" überarbeitet, um benutzerdefinierte Nachrichten je nach Promillewert auszugeben. Ein weiterer Schwerpunkt war die Verbesserung der Berechnung der Promillewerte, sodass nun genauere Ergebnisse erzielt werden können. Es gab einige Herausforderungen bei der Implementierung der Formeln. Link zum PromilleRechner-Repo --> https://github.com/ascii-phoenix/PromilleRechner
 
 06.09.2024
-- [ ] Addition bugfixen
-- [ ] Supbraktion bugfixen
-- [ ] Multiplikation
+- [x] Addition bugfixen
+- [x] Supbraktion bugfixen
+- [x] Multiplikation
 - [ ] Multiplikation bugfixen
 
+Heute habe ich die Arbeit an der Erweiterung für große Ganzzahlen (uExdInt) fortgesetzt und einige bedeutende Fortschritte erzielt.
+Ich habe die Rechenfehler bei der Addition und Subtraktion behoben. Hierzu zählte beispielsweise die korrekte Behandlung negativer Zahlen.
+Die Implementierung der Multiplikation ist noch in Arbeit. Bisherige Ergebnisse entsprechen noch nicht den Erwartungen. Ich werde mich in den nächsten Schritten auf die Ursachenforschung und die Optimierung konzentrieren.
+
+13.09.2024
+- [ ] Multiplikation bugfixen
+- [ ] Division Implemetiren als bruch
+- [ ] Division bei output
+- [ ] Division Bugfix
