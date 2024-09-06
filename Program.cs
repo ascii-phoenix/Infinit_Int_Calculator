@@ -7,9 +7,13 @@ namespace Infinit_Int_Calculator
     {
         static void Main(string[] args)
         {
-            ExdInt try1= new ExdInt("100000000000000");
-            ExdInt try2 = new ExdInt("1000");
-            ExdInt result = try1 + try2; // output == 100000  wtf
+            
+            ExdInt try1= new ExdInt("78947894776556576567432457899876554322345678990984");
+            ExdInt try2 = new ExdInt("-13289904904944447329887432000");
+            //-010492101402599735957892490764618768939099731814395465278650124480062913088000 Code output
+            //-1049210014025997359578924907646187689390997318143954065278650124480062913088000 https://www.calculator.net/big-number-calculator.html output
+            //Not the same output with the same input. Why?
+            ExdInt result = try1 - try2; 
             for (int i= 0; i < result.ArrayOfuInt.Length; i++)
             {
                 Console.Write(result.ArrayOfuInt[i]);
@@ -53,8 +57,8 @@ public class ExdInt : IComparable<ExdInt>, IEquatable<ExdInt>
     { 
         ArrayOfuInt = exdInt.ArrayOfuInt;
         stringOfInt = exdInt.ToString(); 
-        isStringOfIntNegative = IsIntNegative;}
-
+        isStringOfIntNegative = IsIntNegative;
+    }
 
     public static implicit operator ExdInt(long intOfInput) { return new ExdInt(intOfInput); }
     public static implicit operator ExdInt(int intOfInput) { return new ExdInt(intOfInput); }
@@ -102,47 +106,58 @@ public class ExdInt : IComparable<ExdInt>, IEquatable<ExdInt>
 
         return false;
     }
-    
+
     private uIntWithPadding[] CreateAUExdInt(string stringOfInt)
     {
-        int xSqur10 = 0;
         if (!AreDigitsOnly(stringOfInt))
         {
             isThisNumberUsable = false;
             return null;
-        }   
+        }
         char[] charOfInt = stringOfInt.ToCharArray();
-        uIntWithPadding[] uExdInt;
-        if (charOfInt.Length % 9 == 0) { uExdInt = new uIntWithPadding[(charOfInt.Length / 9)]; }
-        else { uExdInt = new uIntWithPadding[(charOfInt.Length / 9) + 1]; }
-        uExdInt[0] = ConvertToUInt(charOfInt, xSqur10, (charOfInt.Length % 9));
-        xSqur10 += (charOfInt.Length % 9);
-        for (int i = 1; i < (uExdInt.Length); i++)
+        int length = charOfInt.Length;
+        int numChunks = (length % 9 == 0) ? (length / 9) : (length / 9) + 1;
+        uIntWithPadding[] uExdInt = new uIntWithPadding[numChunks];
+        int start = 0;
+        int chunkLength = length % 9 == 0 ? 9 : length % 9;
+        for (int i = 0; i < numChunks; i++)
         {
-                
-                uExdInt[i]  = ConvertToUInt(charOfInt, xSqur10, 9);
-                xSqur10 += 9;
+            uExdInt[i] = ConvertToUInt(charOfInt, start, chunkLength);
+            start += chunkLength;
+            chunkLength = 9; 
         }
         return uExdInt;
     }
-    private static uIntWithPadding ConvertToUInt(char[] charArray, int startIndex, int length) 
+
+    private static uIntWithPadding ConvertToUInt(char[] charArray, int startIndex, int length)
     {
         uint result;
         uIntWithPadding ConvertToUIntResult;
-        do
+
+        while (length > 0)
         {
-            string str = new string(charArray, startIndex, length);
-            if (uint.TryParse(str, out result)) 
+            try
             {
-                ConvertToUIntResult = new uIntWithPadding(result, (uint)length);
-                return ConvertToUIntResult;
+                if (startIndex + length > charArray.Length)
+                    length = charArray.Length - startIndex;
+                string str = new string(charArray, startIndex, length);
+                if (uint.TryParse(str, out result))
+                {
+                    ConvertToUIntResult = new uIntWithPadding(result, (uint)str.Length);
+                    return ConvertToUIntResult;
+                }
+                else
+                {
+                    length--;
+                }
             }
-            else
+            catch
             {
-                if (length == 0) { return ConvertToUIntResult = new uIntWithPadding(0, 0); }
-                length--;
+                return new uIntWithPadding(0, 0);
             }
-        } while (true);
+        }
+
+        return new uIntWithPadding(0, 0);
     }
 
     public int CompareTo(ExdInt? other)
@@ -202,50 +217,143 @@ public class ExdInt : IComparable<ExdInt>, IEquatable<ExdInt>
     #region Operators
     public static ExdInt operator +(ExdInt a, ExdInt b)
     {
+        if (a.isStringOfIntNegative != b.isStringOfIntNegative)
+        {
+            if (a > b)
+            {
+                b.isStringOfIntNegative = false;
+                return new ExdInt(a - b, false);
+            }
+            else
+            {
+                a.isStringOfIntNegative = false;
+                return new ExdInt(b - a, true);
+            }
+        }
         List<uIntWithPadding> result = new List<uIntWithPadding>();
         long carry = 0;
         int max = Math.Max(a.ArrayOfuInt.Length, b.ArrayOfuInt.Length);
-        Array.Reverse(a.ArrayOfuInt);
-        Array.Reverse(b.ArrayOfuInt);
         for (int i = 0; i < max; i++)
         {
             long sum = carry;
             if (i < a.ArrayOfuInt.Length)
-                sum += (uint)a.ArrayOfuInt[i].Value;
+                sum += a.ArrayOfuInt[a.ArrayOfuInt.Length - 1 - i].Value; 
             if (i < b.ArrayOfuInt.Length)
-                sum += (uint)b.ArrayOfuInt[i].Value;
+                sum += b.ArrayOfuInt[b.ArrayOfuInt.Length - 1 - i].Value;
             carry = sum / 1000000000;
-            Console.WriteLine($"Sum: {sum} Carry: {carry}");
-            result.Add(new uIntWithPadding((uint)(sum % 1000000000), (uint)Math.Log10(sum) + 1));
+            uint newValue = (uint)(sum % 1000000000);
+            uint totalDigits = (i == max - 1) ? (uint)newValue.ToString().Length : 9;
+            result.Add(new uIntWithPadding(newValue, totalDigits));
         }
         if (carry > 0)
         {
-            result.Add(new uIntWithPadding((uint)carry, ((uint)Math.Log10(carry) + 1)));
+            result.Add(new uIntWithPadding((uint)carry, (uint)carry.ToString().Length));
         }
         result.Reverse();
-        return new ExdInt(result);
+        return new ExdInt(result, a.isStringOfIntNegative);
     }
+
     public static ExdInt operator -(ExdInt a, ExdInt b)
     {
         if (a.isStringOfIntNegative != b.isStringOfIntNegative)
         {
-            if (a >= b)
+            if (a > b) 
             {
-                ExdInt exdInt = new ExdInt(a + b);
-                return new ExdInt(exdInt);
+                b.isStringOfIntNegative = false;
+                return new ExdInt(a + b);
             }
             else
             {
-                ExdInt exdInt = new ExdInt(a + b);
-                return new ExdInt(exdInt, true);
+                b.isStringOfIntNegative = true;
+                return new ExdInt(b + a);
             }
         }
-        else
+        bool isResultNegative = false;
+        if (a < b)
         {
-
+            isResultNegative = true;
+            var temp = a;
+            a = b;
+            b = temp;
         }
-        return new ExdInt(0);
+        List<uIntWithPadding> result = new List<uIntWithPadding>();
+        long borrow = 0;
+        int max = Math.Max(a.ArrayOfuInt.Length, b.ArrayOfuInt.Length);
+
+        for (int i = 0; i < max; i++)
+        {
+            long diff = borrow;
+            if (i < a.ArrayOfuInt.Length)
+            {
+                diff += a.ArrayOfuInt[a.ArrayOfuInt.Length - 1 - i].Value;
+            }
+            if (i < b.ArrayOfuInt.Length)
+            {
+                diff -= b.ArrayOfuInt[b.ArrayOfuInt.Length - 1 - i].Value;
+            }
+            if (diff < 0)
+            {
+                int borrowIndex = a.ArrayOfuInt.Length - 1 - i - 1;
+                while (borrowIndex >= 0 && a.ArrayOfuInt[borrowIndex].Value == 0)
+                {
+                    a.ArrayOfuInt[borrowIndex].Value = 999999999;
+                    borrowIndex--;
+                }
+                if (borrowIndex >= 0)
+                {
+                    a.ArrayOfuInt[borrowIndex].Value--;
+                }
+                diff += 1000000000;
+            }
+
+            uint newValue = (uint)(diff % 1000000000);
+            uint totalDigits = (i == max - 1) ? (uint)newValue.ToString().Length : 9;
+            result.Add(new uIntWithPadding(newValue, totalDigits));
+        }
+
+        while (result.Count > 1 && result[0].Value == 0)
+        {
+            result.RemoveAt(0);
+        }
+        result.Reverse();
+        return new ExdInt(result, isResultNegative);
     }
+   /* public static ExdInt operator *(ExdInt a, ExdInt b)
+    {
+        bool isResultNegative = a.isStringOfIntNegative != b.isStringOfIntNegative;
+        int resultLength = a.ArrayOfuInt.Length + b.ArrayOfuInt.Length;
+        List<uIntWithPadding> result = new List<uIntWithPadding>(new uIntWithPadding[resultLength]);
+        for (int i = 0; i < resultLength; i++)
+        {
+            result[i] = new uIntWithPadding(0, 0);
+        }
+        for (int i = 0; i < a.ArrayOfuInt.Length; i++)
+        {
+            for (int j = 0; j < b.ArrayOfuInt.Length; j++)
+            {
+                long product = (long)a.ArrayOfuInt[a.ArrayOfuInt.Length - 1 - i].Value * (long)b.ArrayOfuInt[b.ArrayOfuInt.Length - 1 - j].Value;
+                int position = i + j;
+                long sum = product + result[position].Value;
+                result[position] = new uIntWithPadding((uint)(sum % 1000000000), (uint)(sum % 1000000000).ToString().Length);
+                int carryPosition = position + 1;
+                while (carryPosition < result.Count && sum >= 1000000000)
+                {
+                    sum /= 1000000000;
+                    result[carryPosition].Value += (uint)sum;
+                    carryPosition++;
+                    sum = result[carryPosition].Value;
+                }
+            }
+        }
+        while (result.Count > 1 && result[0].Value == 0)
+        {
+            result.RemoveAt(0);
+        }
+        result.Reverse();
+        return new ExdInt(result, isResultNegative);
+    }
+   */
+
 
     public static bool operator >(ExdInt operand1, ExdInt operand2)
     {
@@ -266,8 +374,11 @@ public class ExdInt : IComparable<ExdInt>, IEquatable<ExdInt>
     {
         return operand1.CompareTo(operand2) <= 0;
     }
+    #endregion
 }
-#endregion
+
+
+#region uIntWithPadding
 public struct uIntWithPadding
 {
     public uint Value;
@@ -281,8 +392,8 @@ public struct uIntWithPadding
     }
     public override string ToString()
     {
-        return Value.ToString($"D{TotalDigits}");
+        return Value.ToString(TotalDigits == 9 ? "D9" : $"D{TotalDigits}");
     }
 }
-
+#endregion
 
