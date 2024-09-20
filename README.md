@@ -52,3 +52,5 @@ Die Implementierung der Multiplikation ist noch in Arbeit. Bisherige Ergebnisse 
 - [ ] Division Implemetiren als bruch
 - [ ] Division bei output
 - [ ] Division Bugfix
+
+Heute habe ich mit meinem neuen Raspberry
