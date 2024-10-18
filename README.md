@@ -61,6 +61,15 @@ Die Implementierung der Multiplikation ist noch in Arbeit. Bisherige Ergebnisse 
 Heute habe ich mit meinem neuen Raspberry pi Gearbeitet. Ich habe dank dem Raspberry Pi imager konnte ich das OS für den Raspberry pi herunterladen. Als nächstes versucht ich mich mit ssh auf den raspberry verbinden, was zuerst nicht funktioniert hat da ich es im netzwerck nicht finden konnte. Die lösung des Problemes war das ich es über einen hotspot der von mir kamm benutzte. zum schluss verbendete ich mich mit RealVNC Viewer mir dem Pi um
 mich mit dem bildschirm zu verbinden.
 
+20.09.2024
+- [ ] Raspberry mit lan verbinden
+- [ ] VS code Instalieren
+- [ ] RetroArch
+--------------------------------------------------------------------------------------------------------------------------------
+- [x] Raspberry mit lan verbinden
+- [ ] Multiplikation bugfixen
+- [ ] Division Implemetiren als bruch
+Leider Konnte ich Heute nicht viel machen. Ich hatte Probleme mit meinen Usb hub den ich mitgenommen und konnte leider dadurch nicht im untericht durfüren. Da ich aber schon die dokumentation duchgelesen habe machte ich es Zuhause nachgeholt.Der rest der Zeit habe ich gebraucht um die Multiplikation funktionieren zu lasen. Leider kommete ich nicht weiter. die rechnung gibt einfach nicht das richtige resultat. Das ist schon der 3 tag an dem ich daran arbeite. doch ich komme nicht an die lösung.
 
 
 
