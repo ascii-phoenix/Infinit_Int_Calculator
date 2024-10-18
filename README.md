@@ -53,4 +53,14 @@ Die Implementierung der Multiplikation ist noch in Arbeit. Bisherige Ergebnisse 
 - [ ] Division bei output
 - [ ] Division Bugfix
 
-Heute habe ich mit meinem neuen Raspberry
+--------------------------------------------------------------------------------------------------------------------------
+- [x] Pi os Auf dem Raspberry pi 4 instalieren
+- [x] mit ssh Raspberry Pi
+- [x] über RealVNC Viewer auf den Raspberry Pi
+- [ ] Mit Lan den Raspberry pi verbinden
+Heute habe ich mit meinem neuen Raspberry pi Gearbeitet. Ich habe dank dem Raspberry Pi imager konnte ich das OS für den Raspberry pi herunterladen. Als nächstes versucht ich mich mit ssh auf den raspberry verbinden, was zuerst nicht funktioniert hat da ich es im netzwerck nicht finden konnte. Die lösung des Problemes war das ich es über einen hotspot der von mir kamm benutzte. zum schluss verbendete ich mich mit RealVNC Viewer mir dem Pi um
+mich mit dem bildschirm zu verbinden.
+
+
+
+
