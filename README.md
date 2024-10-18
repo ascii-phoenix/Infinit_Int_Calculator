@@ -72,5 +72,9 @@ mich mit dem bildschirm zu verbinden.
 Leider Konnte ich Heute nicht viel machen. Ich hatte Probleme mit meinen Usb hub den ich mitgenommen und konnte leider dadurch nicht im untericht durfüren. Da ich aber schon die dokumentation duchgelesen habe machte ich es Zuhause nachgeholt.Der rest der Zeit habe ich gebraucht um die Multiplikation funktionieren zu lasen. Leider kommete ich nicht weiter. die rechnung gibt einfach nicht das richtige resultat. Das ist schon der 3 tag an dem ich daran arbeite. doch ich komme nicht an die lösung.
 
 
+In dieser Lernperiode habe ich mich intensiv auf das Programmieren konzentriert, insbesondere auf die Arbeit mit großen Ganzzahlen (uExdInt). Die uExdInt-Erweiterung drehte sich um Berechnungen mit großen Zahlen. Es war herausfordernd, das Padding und die Vorkommastellen korrekt zu handhaben, besonders bei der Addition und Subtraktion. Ich habe auch die Vergleichsoperatoren implementiert, um die Zahlen vergleichen und sortieren zu können.
+
+Leider hatte ich allgemeine Schwierigkeiten mit der Multiplikation und kenne den Grund dafür immer noch nicht. Allerdings habe ich gelernt, wie man Interfaces nutzt. Das Projekt hat mir viel Spaß gemacht, da es mich an meine programmatischen Grenzen gebracht hat. Obwohl ich bei der Multiplikation nicht weitergekommen bin, bin ich zufrieden und möchte das Projekt fortsetzen.
+
 
 
